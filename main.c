@@ -35,8 +35,9 @@ int main(void){
     srand(56);
     float w = rand_float()*10.0f;
 
-    
+    float eps = 1e-3;
     printf("%f\n",cost(w));
+    printf("%f\n",cost(w - eps));
   
     // printf("hello \n");
     return 0;
