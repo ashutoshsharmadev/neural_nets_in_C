@@ -21,7 +21,7 @@ float cost(float w){
         for (size_t i=0;i<train_count;i++){
         float x = train[i][0];
         float y = x*w;
-        printf("%f,%f\n",y,train[i][1]);
+        // printf("%f,%f\n",y,train[i][1]);
         float d = y - train[i][1];
         result += d*d;
     }
@@ -36,8 +36,14 @@ int main(void){
     float w = rand_float()*10.0f;
 
     float eps = 1e-3;
+    for (size_t i = 0; i < 1000; ++i){
+    float dcost = (cost(w+eps)-cost(w))/eps;
+    float rate = 1e-3;
     printf("%f\n",cost(w));
-    printf("%f\n",cost(w - eps));
+    w -= rate*dcost;
+}
+printf("%f\n",w);
+    // printf("%f\n",cost(w));
   
     // printf("hello \n");
     return 0;
